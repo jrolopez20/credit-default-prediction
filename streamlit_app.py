@@ -52,3 +52,6 @@ test.years_in_current_job.unique()
 
 train.years_in_current_job = train.years_in_current_job.agg(lambda x: x.fillna(x.median()))
 test.years_in_current_job = test.years_in_current_job.agg(lambda x: x.fillna(x.median()))
+
+print('In total unique purpose values Train dataset are ' + (str(train.purpose.nunique())))
+print('In total unique purpose values Test dataset are ' + (str(test.purpose.nunique())))
