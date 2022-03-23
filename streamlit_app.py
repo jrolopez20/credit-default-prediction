@@ -33,9 +33,9 @@ st.write(train.head())
 ### Conjunto de datos de prueba
 """
 st.write(test.head())
-
+a,b = train.shape
 chart_data = pd.DataFrame(
-     [[4,3]],
+     [[4], [3]],
      columns=["Filas", "Columnas"])
 
 st.bar_chart(chart_data)
