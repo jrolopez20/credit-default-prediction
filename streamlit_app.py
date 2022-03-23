@@ -15,12 +15,12 @@ import streamlit as st
 train = pd.read_csv('./input/train.csv')
 test = pd.read_csv('./input/test.csv')
 """
-## Conjuno de entrenamiento
+### Conjunto de entrenamiento
 """
 st.write(train.head())
 
 """
-## Conjunto de datos prueba
+### Conjunto de datos prueba
 """
 st.write(test.head())
 
