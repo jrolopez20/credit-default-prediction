@@ -34,10 +34,11 @@ st.write(train.head())
 """
 st.write(test.head())
 a,b = train.shape
+st.write(a, b)
 chart_data = pd.DataFrame(
-     [[4], [3]],
-     columns=["Filas", "Columnas"])
-
+     np.random.randn(50, 3),
+     columns=["a", "b", "c"])
+st.write(np.random.randn(50, 3))
 st.bar_chart(chart_data)
 
 # Strip column names of all spaces and add underscore wherever required
