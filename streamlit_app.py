@@ -124,7 +124,7 @@ clf2 = tree.DecisionTreeClassifier()
 clf2.fit(X_train_2, y_train)
 
 ac_2 = accuracy_score(y_valid,clf2.predict(X_valid_2))
-print('Accuracy is: ',int(ac_2*100), ' %')
+st.write('Accuracy is: ',int(ac_2*100), ' %')
 
 cm_2 = confusion_matrix(y_valid,clf2.predict(X_valid_2))
 sns.heatmap(cm_2,annot=True,fmt="d")
