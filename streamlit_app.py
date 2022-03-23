@@ -132,3 +132,5 @@ st.write('Accuracy is: ',int(ac_2*100), ' %')
 
 cm_2 = confusion_matrix(y_valid,clf2.predict(X_valid_2))
 sns.heatmap(cm_2,annot=True,fmt="d")
+st.pyplot(fig)
+
