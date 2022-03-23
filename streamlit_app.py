@@ -28,13 +28,13 @@ test = pd.read_csv('./input/test.csv')
 ### Conjunto de datos de entrenamiento
 """
 st.write(train.head())
-train.shape
+st.write('Total de filas por columnas:', train.shape)
 
 """
 ### Conjunto de datos de prueba
 """
 st.write(test.head())
-test.shape
+st.write('Total de filas por columnas:', test.shape)
 
 # Strip column names of all spaces and add underscore wherever required
 train.columns = ['_'.join(col.split(' ')).lower() for col in train.columns]
