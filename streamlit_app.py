@@ -15,7 +15,7 @@ import streamlit as st
 
 train = pd.read_csv('./input/train.csv')
 test = pd.read_csv('./input/test.csv')
-train.head()
+st.write(train.head())
 
 
 
