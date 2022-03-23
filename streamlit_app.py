@@ -83,3 +83,4 @@ sns.heatmap(train.corr(),
              xticklabels=corr.columns.values,
             yticklabels=corr.columns.values)
 
+st.write(sns)
