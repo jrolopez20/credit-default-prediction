@@ -116,4 +116,4 @@ df['Score'] = df['Score'].replace(np.nan, 0)
 df['Score'] = df['Score'].astype(int)
 df.sort_values(by='Score', ascending=False)
 
-
+st.write(df)
