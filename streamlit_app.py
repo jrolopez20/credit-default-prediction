@@ -92,5 +92,19 @@ test2 = pd.get_dummies(test2, drop_first=True)
 # Model Designing
 X = train2.drop(['credit_default'], axis=1)
 y = train2.credit_default
-train2.shape
+
+# Train and Validity Split
+# Divide the train date into train_train and train_valid
+X_train, X_valid, y_train, y_valid = train_test_split(X, y,
+                                                      train_size=0.8, test_size=0.2,
+                                                      random_state=0)
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(X_train, y_train)
+
+ac = accuracy_score(y_valid, clf.predict(X_valid))
+st.write('Accuracy is: ', int(ac * 100), " %")
+cm = confusion_matrix(y_valid, clf.predict(X_valid))
+sns.heatmap(cm, annot=True, fmt="d")
+
+
 
