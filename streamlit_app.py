@@ -28,18 +28,13 @@ test = pd.read_csv('./input/test.csv')
 ### Conjunto de datos de entrenamiento
 """
 st.write(train.head())
+train.shape
 
 """
 ### Conjunto de datos de prueba
 """
 st.write(test.head())
-a,b = train.shape
-st.write(a, b)
-chart_data = pd.DataFrame(
-     np.random.randn(50, 3),
-     columns=["a", "b", "c"])
-st.write(np.random.randn(50, 3))
-st.bar_chart(chart_data)
+test.shape
 
 # Strip column names of all spaces and add underscore wherever required
 train.columns = ['_'.join(col.split(' ')).lower() for col in train.columns]
