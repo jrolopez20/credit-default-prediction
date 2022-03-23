@@ -35,7 +35,7 @@ st.write(train.head())
 st.write(test.head())
 
 chart_data = pd.DataFrame(
-     [4,3],
+     [[4,3]],
      columns=["Filas", "Columnas"])
 
 st.bar_chart(chart_data)
