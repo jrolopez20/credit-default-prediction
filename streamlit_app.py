@@ -106,5 +106,14 @@ st.write('Accuracy is: ', int(ac * 100), " %")
 cm = confusion_matrix(y_valid, clf.predict(X_valid))
 sns.heatmap(cm, annot=True, fmt="d")
 
+# Find best scored 5 features
+select_feature = SelectKBest(chi2, k=5).fit(X_valid, y_valid)
+a = select_feature.scores_
+b = X_train.columns
+df = pd.DataFrame(list(zip(b, a)), columns=['Column', 'Score'])
+
+df['Score'] = df['Score'].replace(np.nan, 0)
+df['Score'] = df['Score'].astype(int)
+df.sort_values(by='Score', ascending=False)
 
 
