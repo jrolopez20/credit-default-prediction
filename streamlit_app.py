@@ -34,6 +34,12 @@ st.write(train.head())
 """
 st.write(test.head())
 
+chart_data = pd.DataFrame(
+     train.shape,
+     columns=["Filas", "Columnas"])
+
+st.bar_chart(chart_data)
+
 # Strip column names of all spaces and add underscore wherever required
 train.columns = ['_'.join(col.split(' ')).lower() for col in train.columns]
 test.columns = ['_'.join(col.split(' ')).lower() for col in test.columns]
