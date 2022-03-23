@@ -53,5 +53,33 @@ test.years_in_current_job.unique()
 train.years_in_current_job = train.years_in_current_job.agg(lambda x: x.fillna(x.median()))
 test.years_in_current_job = test.years_in_current_job.agg(lambda x: x.fillna(x.median()))
 
-print('In total unique purpose values Train dataset are ' + (str(train.purpose.nunique())))
-print('In total unique purpose values Test dataset are ' + (str(test.purpose.nunique())))
+# Create a list of all values in Purpose column of train dataset
+train_purpose = [i for i in train.purpose]
+
+# Create a list of all values in Purpose column of test dataset
+test_purpose = [i for i in test.purpose]
+
+# Substract the values in test from values in train.
+
+bad_label_cols = list(set(train_purpose) - set(test_purpose))
+
+# Remove renewable energy
+train = train[train.purpose != 'renewable energy']
+
+# Proceed to fulfill null values with its column median
+train.bankruptcies = train.bankruptcies.agg(lambda x: x.fillna(x.median()))
+train.months_since_last_delinquent = train.months_since_last_delinquent.agg(lambda x: x.fillna(x.median()))
+train.credit_score = train.credit_score.agg(lambda x: x.fillna(x.median()))
+train.annual_income = train.annual_income.agg(lambda x: x.fillna(x.mean()))
+
+test.bankruptcies = test.bankruptcies.agg(lambda x: x.fillna(x.median()))
+test.months_since_last_delinquent = test.months_since_last_delinquent.agg(lambda x: x.fillna(x.median()))
+test.credit_score = test.credit_score.agg(lambda x: x.fillna(x.median()))
+test.annual_income = test.annual_income.agg(lambda x: x.fillna(x.mean()))
+
+# Feature Engineering
+corr = train.corr()
+sns.heatmap(train.corr(),
+             xticklabels=corr.columns.values,
+            yticklabels=corr.columns.values)
+
