@@ -83,4 +83,9 @@ sns.heatmap(train.corr(),
              xticklabels=corr.columns.values,
             yticklabels=corr.columns.values)
 
-st.write(sns)
+train2 = train.drop('id', axis=1)
+test2 = test.copy()
+
+train2 = pd.get_dummies(train2, drop_first=True)
+train2.shape
+
