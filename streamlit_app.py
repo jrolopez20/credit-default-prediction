@@ -77,11 +77,14 @@ test.months_since_last_delinquent = test.months_since_last_delinquent.agg(lambda
 test.credit_score = test.credit_score.agg(lambda x: x.fillna(x.median()))
 test.annual_income = test.annual_income.agg(lambda x: x.fillna(x.mean()))
 
+fig = plt.figure(figsize=(12, 6))   
+
 # Feature Engineering
 corr = train.corr()
 sns.heatmap(train.corr(),
              xticklabels=corr.columns.values,
             yticklabels=corr.columns.values)
+st.pyplot(fig)
 
 train2 = train.drop('id', axis=1)
 test2 = test.copy()
