@@ -123,7 +123,8 @@ st.pyplot(fig) # Render the sns heatmap throw figure object
 """
 #### Se califica cada una de las características y se seleccionan las 5 con mejor puntuación para volver a entrenar el modelo:
 """
-select_feature = SelectKBest(chi2, k=5).fit(X_valid, y_valid)
+features_number = st.slider("Numero de características a considerar", 1, 7, 5)
+select_feature = SelectKBest(chi2, k=features_number).fit(X_valid, y_valid)
 a = select_feature.scores_
 b = X_train.columns
 df = pd.DataFrame(list(zip(b, a)), columns=['Column', 'Score'])
