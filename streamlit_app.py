@@ -87,5 +87,10 @@ train2 = train.drop('id', axis=1)
 test2 = test.copy()
 
 train2 = pd.get_dummies(train2, drop_first=True)
+test2 = pd.get_dummies(test2, drop_first=True)
+
+# Model Designing
+X = train2.drop(['credit_default'], axis=1)
+y = train2.credit_default
 train2.shape
 
