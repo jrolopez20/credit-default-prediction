@@ -81,6 +81,9 @@ fig = plt.figure(figsize=(12, 6))
 
 # Feature Engineering
 corr = train.corr()
+"""
+### Relación entre cada una de las variables
+"""
 sns.heatmap(train.corr(),
              xticklabels=corr.columns.values,
             yticklabels=corr.columns.values)
@@ -105,12 +108,19 @@ clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X_train, y_train)
 
 ac = accuracy_score(y_valid, clf.predict(X_valid))
+
+"""
+### Luego de entrenar el modelo se obtiene:
+"""
 st.write('Accuracy is: ', int(ac * 100), " %")
 cm = confusion_matrix(y_valid, clf.predict(X_valid))
 sns.heatmap(cm, annot=True, fmt="d")
 st.pyplot(fig) # Render the sns heatmap throw figure object
 
 # Find best scored 5 features
+"""
+#### Se califica cada una de las características y se seleccionan las 5 con mejor puntuación para volver a entrenar el modelo:
+"""
 select_feature = SelectKBest(chi2, k=5).fit(X_valid, y_valid)
 a = select_feature.scores_
 b = X_train.columns
@@ -127,6 +137,9 @@ X_valid_2 = select_feature.transform(X_valid)
 clf2 = tree.DecisionTreeClassifier()
 clf2.fit(X_train_2, y_train)
 
+"""
+### Se vuelve a ejecutar el modelo:
+"""
 ac_2 = accuracy_score(y_valid,clf2.predict(X_valid_2))
 st.write('Accuracy is: ',int(ac_2*100), ' %')
 
