@@ -108,6 +108,7 @@ ac = accuracy_score(y_valid, clf.predict(X_valid))
 st.write('Accuracy is: ', int(ac * 100), " %")
 cm = confusion_matrix(y_valid, clf.predict(X_valid))
 sns.heatmap(cm, annot=True, fmt="d")
+st.pyplot(fig) # Render the sns heatmap throw figure object
 
 # Find best scored 5 features
 select_feature = SelectKBest(chi2, k=5).fit(X_valid, y_valid)
